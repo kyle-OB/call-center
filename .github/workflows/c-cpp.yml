@@ -24,4 +24,4 @@ jobs:
         ls -la  # confirm binary exists
 
     - name: Run program
-      run: ./call-center
+      run: ./main
