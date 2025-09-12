@@ -20,7 +20,7 @@ jobs:
     - name: Compile program
       run: |
         ls -la
-        g++ -std=c++17 -pthread main.cpp -o callcenter
+        g++ -std=c++17 -pthread main.cpp -o call-center
         ls -la  # confirm binary exists
 
     - name: Run program
