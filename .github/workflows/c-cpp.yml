@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: C++ Build and Run
 
 on:
   push:
@@ -8,16 +8,20 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Install g++
+      run: sudo apt-get update && sudo apt-get install -y g++
+
+    - name: Compile program
+      run: |
+        ls -la
+        g++ -std=c++17 -pthread main.cpp -o callcenter
+        ls -la  # confirm binary exists
+
+    - name: Run program
+      run: ./call-center
